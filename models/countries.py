@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from database import Base
 
 class Countries(Base):
@@ -6,3 +7,5 @@ class Countries(Base):
 
     id = Column(Integer, primary_key = True, index= True)
     country = Column(String)
+
+    movie = relationship("Movie", back_populates="movies")

@@ -1,17 +1,11 @@
-from fastapi import FastAPI, Depends
-from sqlalchemy.orm import Session
-import models, schemas, crud
-from database import SessionLocal, engine
+from fastapi import FastAPI
+from database import engine, Base
+import models
 
-models.Base.metadata.create_all(bind=engine)
+#from routers import movie_router, user_router
 
-app = FastAPI()
+Base.metadata.create_all(bind=engine)
 
-# dependencia de la DB
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
+app = FastAPI(
+    title="Movies API"
+)
