@@ -8,4 +8,4 @@ class Genres(Base):
     id = Column(Integer, primary_key = True, index= True)
     gender = Column(String)
 
-    movies = relationship("Movie", secondary="movie_genres", back_populates="genres")
+    movies = relationship("Movies", secondary="movie_genres", back_populates="genres")

@@ -2,10 +2,14 @@ from fastapi import FastAPI
 from database import engine, Base
 import models
 
-#from routers import movie_router, user_router
+from routers import users_router, ratings_router, movies_router
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Movies API"
 )
+
+app.include_router(users_router.router)
+app.include_router(ratings_router.router)
+app.include_router(movies_router.router)

@@ -11,5 +11,5 @@ class Ratings(Base):
     rating = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    user = relationship("User", back_populates="ratings")
-    movie = relationship("Movie", back_populates="ratings")
+    user = relationship("Users", back_populates="ratings")
+    movie = relationship("Movies", back_populates="ratings")

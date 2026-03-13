@@ -8,4 +8,4 @@ class Countries(Base):
     id = Column(Integer, primary_key = True, index= True)
     country = Column(String)
 
-    movie = relationship("Movie", back_populates="movies")
+    movies = relationship("Movies", back_populates="country")

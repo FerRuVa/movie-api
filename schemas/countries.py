@@ -10,8 +10,9 @@ class CountryCreate(CountryBase):
 class Country(CountryBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True
+    }
 
 class CountryUpdate(BaseModel):
     country: Optional[str]= None

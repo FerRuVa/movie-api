@@ -10,5 +10,5 @@ class Comments(Base):
     comment = Column(String)
     created_at = Column(DateTime, default=datetime.utcnow)
 
-    user = relationship("User", back_populates="comments")
-    movie = relationship("Movie", back_populates="comments")
+    user = relationship("Users", back_populates="comments")
+    movie = relationship("Movies", back_populates="comments")

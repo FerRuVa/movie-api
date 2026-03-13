@@ -10,8 +10,9 @@ class GenderCreate(GenderBase):
 class Gender(GenderBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {
+        "from_attributes": True
+    }
 
 class GenderUpdate(BaseModel):
     gender: Optional[str]= None
