@@ -7,3 +7,7 @@ class MovieGenresBase(BaseModel):
 
 class MovieGenresCreate(MovieGenresBase):
     pass
+
+class MovieGenres(MovieGenresBase):
+    class Config:
+        orm_mode = True
