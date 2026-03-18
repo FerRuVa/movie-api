@@ -32,5 +32,5 @@ def update_user(user_id: int, user: schemas.users.UserUpdate, db: Session = Depe
 
 #delete
 @router.delete('/{user_id}')
-def delete_user(user_id: int, user: schemas.users.UserUpdate, db: Session = Depends(get_db)):
-    return services.users.delete_user(db, user_id, user)
+def delete_user(user_id: int, db: Session = Depends(get_db)):
+    return services.users.delete_user(db, user_id)
