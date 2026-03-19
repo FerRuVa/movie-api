@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import SessionLocal
 import models.users, schemas.users, services.users
@@ -34,3 +34,16 @@ def update_user(user_id: int, user: schemas.users.UserUpdate, db: Session = Depe
 @router.delete('/{user_id}')
 def delete_user(user_id: int, db: Session = Depends(get_db)):
     return services.users.delete_user(db, user_id)
+
+#login
+@router.post("/login")
+def login(data: schemas.users.User, db: Session = Depends(get_db)):
+    user = services.users.authenticate_user(db, data.email, data.password)
+
+    if not user:
+        raise HTTPException(status_code=401, detail="Credenciales incorrectas")
+
+    return{
+        "message": "Login Exitoso",
+        "user_id": user.id
+    }
