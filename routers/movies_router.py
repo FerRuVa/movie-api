@@ -22,9 +22,9 @@ def get_movies(db: Session = Depends(get_db)):
     return movies
 
 #Read year
-@router.get("/year/{movie_id}")
-def get_year(movie_id: int, db: Session = Depends(get_db)):
-    return services.movies.get_year(db, movie_id)
+@router.get("/year/{year}")
+def get_year(year: int, db: Session = Depends(get_db)):
+    return services.movies.get_year(db, year)
 
 #Read word
 @router.get("/search/{search}")
