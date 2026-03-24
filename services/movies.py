@@ -21,14 +21,15 @@ def get_query(db: Session, search: str | None = None):
     if search:
         query = query.filter(
             or_(
-                models.Movies.title.ilike(f"%{search}"),
-                models.Movies.description.ilike(f"%{search}")
+                models.Movies.title.ilike(f"%{search}%"),
+                models.Movies.description.ilike(f"%{search}%")
             )
         )
 
     return query.all()
+
 # FILTRO DE BÚQUEDA DE PELICULAS POR AÑO DE ESTRENO
-def get_year(db: Session, year: int, movie: schemas.movies.Movie):
+def get_year(db: Session, year: int):
         return db.query(models.movies.Movies).filter(models.movies.Movies.release_year == year).first()
 
 # ACTUALIZACIÓN DE PELICULAS
