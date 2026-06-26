@@ -23,5 +23,5 @@ def get_users(db: Session = Depends(get_db)):
 
 #Create
 @router.post("/create")
-def create_asotiation(genres: schemas.genres.GenderCreate, db: Session = Depends(get_db)):
+def create_genred(genres: schemas.genres.GenderCreate, db: Session = Depends(get_db)):
     return services.genres.create_genred(db, genres)
